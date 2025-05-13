@@ -2,7 +2,7 @@
 **Mr. Rabbit is a cybersecurity-themed embedded challenge project designed for ESP32. It simulates a stealthy network "target" that participants must discover, connect to, and interact with—much like a CTF (Capture The Flag) game. Participants must use network scanning tools (Nmap, Wireshark) to locate Mr. Rabbit and obtain a secret word.**
 
 
-## 📡 Requirements
+## 📋 Requirements
 **Hardware:** ESP32 Dev Module, SG90 servo motors, piezo buzzer
 
 **Software:** PlatformIO or Arduino framework, Telegram Bot API token (for notifications)
@@ -11,34 +11,52 @@
 ## 🚀 Getting Started
 1. Clone the repo.
 
-2. Set up your parameters in Secrets.h (WiFi ssids/passwords) and Telegram.h (Telegram Bot API token, Telegram Chat ID)
+2. Set up your parameters:
+   + `Secrets.h` - add Wi-Fi SSIDs and passwords
+   + `Telegram.h` - insert your Telegram Bot API token and Chat ID
 
-3. Upload to ESP32 via PlatformIO or Arduino IDE.
+4. Upload to ESP32 using PlatformIO or Arduino IDE.
 
-4. Power up the device and see the message in Telegram that Mr. Rabbit is on.
+5. Power on the device. A Telegram message will notify you that Mr. Rabbit is online.
 
 
-## 🧪 Challenge Flow
-### Startup
-**Mr. Rabbit:**
-+ connects to one of the predefined Wi-Fi networks randomly;
-+ sends message in Telegram, gives sound and moves ears;
-+ starts sending packets-messages in the network.
+## 🔀 Challenge Flow
+### 🟢 Startup
+Upon boot, **Mr. Rabbit:**
++ connects randomly to one of the predefined Wi-Fi networks;
++ sends a message via Telegram, plays a buzzer tone, and moves its ears;
++ begins sending packets-messages across the network.
 
-### Discovery
+### 🔍 Discovery
 
-Participants must use **Nmap, Wireshark**, or similar tools to scan the network and detect the active IP, open ports of Mr. Rabbit and message that it sends.
+Participants must use **Nmap, Wireshark**, or similar tools to:
++ detect Mr. Rabbit’s active IP address,
++ identify open ports,
++ read the broadcast messages containing challenge clues.
 
-### Connection
+### 🔐 Connection
 
-Once found, users connect via **Telnet** to retrieve:
+Once discovered, participants connect via **Telnet** to one of the visible ports to receive:
 + hints about the challenge;
-+ hints about hidden port;
-+ login/password for hidden port;
-+ secret key-word.
++ information about the hidden port;
++ login/password for that hidden port;
++ the final secret keyword upon successful access.
 
-### Time Pressure
+### ⏳ Time Pressure
 
-Mr. Rabbit jumps (change WiFi, hidden port and secrets) every 10 minutes (you can change this time in the Mr_Rabbit.ino - JUMP_INTERVAL), so be quick.
+Mr. Rabbit "jumps" every **10 minutes**, meaning:
++ it connectsto a random Wi-Fi network,
++ a new hidden port is selected,
++ new credentials for the hidden port are generated.
+
+`⏲️ You can adjust the jump interval in Mr_Rabbit.ino by modifying the JUMP_INTERVAL constant.`
+
+
+## 📁 Task Files
+Challenge files for a 5-network setup are available in both Ukrainian and English:
+
+[Mr_Rabbit_Uk.pdf](https://github.com/user-attachments/files/20193534/Mr_Rabbit_Uk.pdf)
+
+[Mr_Rabbit_En.pdf](https://github.com/user-attachments/files/20193235/Mr_Rabbit_En.pdf)
 
 
