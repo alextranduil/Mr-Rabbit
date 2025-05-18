@@ -7,23 +7,23 @@
 Servo servo1;
 Servo servo2;
  
-#define SERVO1_PIN 16
-#define SERVO2_PIN 17
+#define SERVO1_PIN 32
+#define SERVO2_PIN 33
 
 //#define SERVO1_ROTATE_FORWARD  95
 //#define SERVO2_ROTATE_FORWARD  102
 //#define SERVO1_ROTATE_BACK     81
 //#define SERVO2_ROTATE_BACK     80
 
-//#define SERVO1_ROTATE_FORWARD  105   // more forward tilt
-//#define SERVO2_ROTATE_FORWARD  107
-//#define SERVO1_ROTATE_BACK     72    // more backward tilt
-//#define SERVO2_ROTATE_BACK     73
+#define SERVO1_ROTATE_FORWARD  110   // more forward tilt
+#define SERVO2_ROTATE_FORWARD  110
+#define SERVO1_ROTATE_BACK     80    // more backward tilt
+#define SERVO2_ROTATE_BACK     80
 
-#define SERVO1_ROTATE_FORWARD  90
-#define SERVO2_ROTATE_FORWARD  94
-#define SERVO1_ROTATE_BACK     90
-#define SERVO2_ROTATE_BACK     88
+// #define SERVO1_ROTATE_FORWARD  90
+// #define SERVO2_ROTATE_FORWARD  94
+// #define SERVO1_ROTATE_BACK     90
+// #define SERVO2_ROTATE_BACK     88
 
 #define ROTATE_STOP            88
 

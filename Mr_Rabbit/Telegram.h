@@ -1,9 +1,7 @@
 #ifndef Telegram_h
 #define Telegram_h
 
-const String BOT_TOKEN = "";       // Telegram bot token (fill in)
-const String CHAT_ID   = "";          // Telegram chat ID to send messages to (fill in)
-
+# include "Secrets.h"
 
 // sending message of successfull solving via Telegram
 void sendTelegramMessage(IPAddress ip, uint16_t port, String user, String pass, String pib, String secret) {

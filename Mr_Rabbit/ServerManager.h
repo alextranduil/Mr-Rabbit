@@ -1,14 +1,14 @@
 #ifndef ServerManager_h
 #define ServerManager_h
 
-#include <WiFi.h>
 #include "PortManager.h"
 
-WiFiServer* defaultServers[3];     // Servers for open ports
+WiFiServer* defaultServers[MAX_OPEN_PORTS];     // Servers for open ports
 WiFiServer* hiddenServer = nullptr; // Server for hidden access
 
+// Start servers
 void startServers() {
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < MAX_OPEN_PORTS; i++) {
     defaultServers[i] = new WiFiServer(openPorts[i]);
     defaultServers[i]->begin();
   }

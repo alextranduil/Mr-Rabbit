@@ -1,20 +1,22 @@
 #ifndef Sessions_h
 #define Sessions_h
 
-#include "Secrets.h"
+#include "Parameters.h"
 #include "ASCIIRabbit.h"
-#include <WiFi.h>
+#include "Jump.h"
 
-// Telnet session structure
+void handleNewClient(WiFiClient client, bool isHidden);
+
+// Structure to store information about each active Telnet session
 struct TelnetSession {
-  WiFiClient client;
-  bool isHidden;
-  unsigned long startTime;
-  bool authed = false;
-  String userBuf = "";
-  String passBuf = "";
-  bool awaitingFullName = false;
-  bool sentIntro = false;
+  WiFiClient client;              // The client's socket connection
+  bool isHidden;                  // True if connected via hidden port, false if on regular port
+  unsigned long startTime;        // Timestamp when the session started (used for timeout checks)
+  bool authed = false;            // True if the user has successfully authenticated
+  String userBuf = "";            // Buffer to store the entered username
+  String passBuf = "";            // Buffer to store the entered password
+  bool awaitingFullName = false;  // True if the client passed login and now needs to enter their full name
+  bool sentIntro = false;         // True if the ASCII intro art has been sent to this client
 };
 
 TelnetSession sessions[MAX_SESSIONS]; // Array of active sessions
@@ -85,7 +87,7 @@ void handleSessions() {
       continue;
     }
 
-    // Show intro art ONCE upon connection
+    // === Show intro art ONCE upon connection ===
     if (!s.authed && !s.sentIntro) {
       s.sentIntro = true;
       s.client.println("Please enter your rabbitname:");
